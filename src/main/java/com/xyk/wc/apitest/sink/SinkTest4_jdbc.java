@@ -81,13 +81,13 @@ public class SinkTest4_jdbc {
         public void invoke(SensorReading value, Context context) throws Exception {
 
             //直接执行更新语句 如果没有更新成功 就 插入
-            updateStmt.setDouble(1,value.getTemperature());
+            updateStmt.setDouble(1, value.getTemperature());
             updateStmt.setString(2, value.getId());
             updateStmt.execute();
 
-            if(updateStmt.getUpdateCount() == 0){
+            if (updateStmt.getUpdateCount() == 0) {
                 insertStmt.setString(1, value.getId());
-                insertStmt.setDouble(2,value.getTemperature());
+                insertStmt.setDouble(2, value.getTemperature());
                 insertStmt.execute();
             }
 
